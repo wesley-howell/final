@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final</title>
+  <title>CommonCensus</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
 
 <body>
-  <div class="sign-in-or-sign-out"></div>
- 
+  <div class="flex items-center">
+    <div class="text-center font-bold text-3xl text-blue-500">CommonCensus</div>
+    <div class="sign-in-or-sign-out"></div>
+  </div>
   <!-- Put the Firebase config here -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
@@ -21,7 +23,14 @@
 
   <script>
     // Your web app's Firebase configuration
-    var firebaseConfig = {} // replace
+    var firebaseConfig = {
+      apiKey: "AIzaSyB1WrFAGHeEhLf-NENqJK2crWWyAZTcsMY",
+      authDomain: "kiei451-final-8708b.firebaseapp.com",
+      projectId: "kiei451-final-8708b",
+      storageBucket: "kiei451-final-8708b.appspot.com",
+      messagingSenderId: "556806065673",
+      appId: "1:556806065673:web:8eabf0bdaa487d6ded72d8"
+    } // replaced with personal firebase config
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   </script>
