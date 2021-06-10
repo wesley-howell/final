@@ -32,7 +32,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       event.preventDefault()
 
       // get a reference to the input holding the searched city
-      let cityInput = document.querySelector(`.city-input`)
+      let cityInput = document.querySelector(`#search-for-city`)
       let stateInput = document.querySelector(`#state`) 
       
       // store the user-inputted location in memory
@@ -80,15 +80,15 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // prevent default behavior
       event.preventDefault()
 
-      console.log(event) 
+       
       // create URL for 'create_search' lambda function
-      let url = `.netlify/functions/create_search?userName=${user.displayName}&city=${cityInput.value}&state=${state}`
+      let url = `.netlify/functions/create_search?userName=${user.displayName}&city=${city}&state=${state}`
  
       // fetch the URL, wait for the response, and store reponse in memory
       let response = await fetch(url)
 
       // refresh the page [did not add yet - how to refresh page without clearing search results]
-      // location.reload()
+      location.reload()
     })
 
 

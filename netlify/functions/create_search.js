@@ -23,7 +23,7 @@ exports.handler = async function(event) {
     // create new post to firestore db for new user search
     await db.collection('searches').add({
         userName: userName,
-        state: stateId,
+        state: state,
         city: city,
         created: firebase.firestore.FieldValue.serverTimestamp()
     })
