@@ -16,10 +16,14 @@ exports.handler = async function(event) {
     //log to the backend console, to inspect file for queryStringParameters needed
     console.log(censusDataFromCsv)
 
+    // test for data quality. REMOVE
+    let returnValue = JSON.stringify(censusDataFromCsv)
+
+
     // return for lambda function
     return {
         statusCode: 200,
-        body: `census data will appear here`
+        body: returnValue
     }
 
 
