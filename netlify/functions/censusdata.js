@@ -8,7 +8,7 @@ let fs = require('fs')
 exports.handler = async function(event) {
     
     // read censusdata CSV file from disk
-    let censusDataFile = fs.readFileSync(`./censusData.csv`)
+    let censusDataFile = fs.readFileSync(`./censusdata.csv`)
 
     // turn the censusData file into javascript object, wait for that to happen
     let censusDataFromCsv = await csv(censusDataFile)
