@@ -20,6 +20,36 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = `index.html`
     })
 
+    // <-------RECIPE TO ADD NEW USER SEARCHES TO FIRESTORE DATABASE---------->
+
+    // get a reference to the 'get data' button
+    let getDataButton = document.querySelector(`#get-data-button`)
+
+    // handle the clicking of the 'get data' button
+    getDataButton.addEventListener(`click`, async function(event) {
+    
+      // prevent the default behavior (submitting the form)
+      event.preventDefault()
+
+      // get a reference to the input holding the searched location
+      let locationInput = document.querySelector(`#location`)
+      
+      // store the user-inputted location in memory
+      let location = locationInput.value 
+
+      // create the URL for our 'create search' lambda function [NOTE: NEED TO CREATE SEPARATE LAMBDA FUNCTION FOR THIS]
+
+      // fetch the URL, wait for the response, store the response in memory
+
+      // refresh the page
+
+    })
+
+
+
+
+
+
   } else {
     // Signed out
     console.log('signed out')
