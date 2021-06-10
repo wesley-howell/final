@@ -38,10 +38,17 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let location = locationInput.value 
 
       // create the URL for our 'create search' lambda function [NOTE: NEED TO CREATE SEPARATE LAMBDA FUNCTION FOR THIS]
+      let url = `/.netlify/functions/censusdata?city=${location}`
 
       // fetch the URL, wait for the response, store the response in memory
+      let response = await fetch(url)
 
-      // refresh the page
+      // Ask for the json-formatted data from the response, wait for the data, store it in memory
+      let json = await response.json()
+
+      // write the json-formatted data to the JS console
+      console.log(json)
+      
 
     })
 

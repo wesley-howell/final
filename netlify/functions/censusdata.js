@@ -21,12 +21,27 @@ exports.handler = async function(event) {
     // test for data quality. REMOVE
     let returnValue = JSON.stringify(censusDataFromCsv)
 
-    // define variables for key stats to return in response to user search
-    let totalPopulation = censusDataFromCsv.
+    // save reference to each relevant query string parameter in memory
+    let stateId = event.queryStringParameters.state_id
+    let city = event.queryStringParameters.city 
+
+    // create a new object to hold the locations data
+    let locationsToReturn = {}
+    
+    // loop through all location census data
+    for (let i=0; i < censusDataFromCsv.length; i++) {
+        // store each location in memory
+        let locationData = censusDataFromCsv[i]
+
+        // check to see if the location matches the user's input search criteria, and if so:
+
+        // push to the array of listings to return
+        
+    }
 
     return {
         statusCode: 200,
-        body: `Hello from the back end!`
+        body: returnValue
     }
 
 }
