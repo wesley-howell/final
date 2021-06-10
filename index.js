@@ -31,16 +31,17 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // prevent the default behavior (submitting the form)
       event.preventDefault()
 
-      // get a reference to the input holding the searched location
-      let locationInput = document.querySelector(`#location`)
+      // get a reference to the input holding the searched city
+      let cityInput = document.querySelector(`#city`)
       let stateInput = document.querySelector(`#state`) 
       
       // store the user-inputted location in memory
-      let location = locationInput.value 
+      let city = cityInput.value 
       let state = stateInput.value 
+      let userName = user.displayName
 
       // create the URL for census data API 
-      // let url = `/.netlify/functions/censusdata?city=${location}`
+      // let url = `/.netlify/functions/censusdata?city=${city}`
       let url = `/.netlify/functions/censusdata`
 
       // fetch the URL, wait for the response, store the response in memory
@@ -52,9 +53,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // write the json-formatted data to the JS console
       // console.log(json)
 
-      // create a variable for the locations data
-      let locationsData = json
-
       // create reference to the HTML element we are going to append to
       let searchResults = document.querySelector(`#search-results`)
 
@@ -64,7 +62,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let locationElement = json[i]
 
         // create conditional to match user-inputted location
-        if (locationElement.city == location && locationElement.state_id == state) {
+        if (locationElement.city == city && locationElement.state_id == state) {
           document.querySelector(`.search-results`).innerHTML = `
           <h1 class="text-xl text-center">Location: ${locationElement.city}, ${locationElement.state_id}</h1>
           <h1 class="text-xl text-center">Population: ${locationElement.population}</h1>
@@ -82,9 +80,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // prevent default behavior
       event.preventDefault()
 
+      console.log(event) 
       // create URL for 'create_search' lambda function
-      let url = `.netlify/functions/create_search?userName=${user.displayName}&city=${location}&stateId=${state}`
-
+      let url = `.netlify/functions/create_search?userName=${user.displayName}&city=${city}&state=${state}`
+ 
       // fetch the URL, wait for the response, and store reponse in memory
       let response = await fetch(url)
 

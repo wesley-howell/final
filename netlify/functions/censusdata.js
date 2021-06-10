@@ -22,11 +22,10 @@ exports.handler = async function(event) {
     let returnValue = JSON.stringify(censusDataFromCsv)
 
     // save reference to each relevant query string parameter in memory
-    let stateId = event.queryStringParameters.state_id
-    let city = event.queryStringParameters.city 
+    // let stateId = event.queryStringParameters.state_id
+    // let city = event.queryStringParameters.city 
 
     // create a new object to hold the locations data
-    let locationsToReturn = {}
     
     // loop through all location census data
     for (let i=0; i < censusDataFromCsv.length; i++) {
@@ -36,7 +35,7 @@ exports.handler = async function(event) {
         // check to see if the location matches the user's input search criteria, and if so:
 
         // push to the array of listings to return
-        
+
     }
 
     return {
