@@ -14,11 +14,22 @@
   <div>
     <h1 class="text-xl bg-black py-4 px-8">
       <a href="index.html" class="mx-auto container">
-        <span class="font-bold bg-clip-tex text-transparent text-3xl text-blue-500">CommonCensus</span>
-        <div class="ml-auto text-sm sign-in-or-sign-out"></div>
+        <span class="font-bold bg-clip-text text-transparent text-3xl text-blue-500">CommonCensus</span>
+        <div class="ml-auto text-right text-sm sign-in-or-sign-out"></div>
       </a>
     </h1>
   </div>
+
+  <div class="p-8 space-y-8">
+    <div class="my-16">
+      <div class="text-center">
+        <form>
+          <input type="text" name="location" id="location" placeholder="City, ST" class="border border-gray-400 rounded p-2 mr-1">
+          <button class="get-data border bg-blue-500 text-white rounded px-4 py-2">Get Data!</button>
+        </form>
+      </div>
+    </div>
+
   <!-- Put the Firebase config here -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
