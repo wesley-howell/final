@@ -20,7 +20,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = `index.html`
     })
 
-    // <-------RECIPE TO ADD NEW USER SEARCHES TO FIRESTORE DATABASE---------->
+    // <-------RECIPE TO FETCH USER SEARCH FROM BACKEND---------->
 
     // get a reference to the 'get data' button
     let getDataButton = document.querySelector(`#get-data-button`)
@@ -39,8 +39,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let location = locationInput.value 
       let state = stateInput.value 
 
-      // create the URL for our 'create search' lambda function [NOTE: NEED TO CREATE SEPARATE LAMBDA FUNCTION FOR THIS]
-      let url = `/.netlify/functions/censusdata?city=${location}`
+      // create the URL for census data API 
+      // let url = `/.netlify/functions/censusdata?city=${location}`
+      let url = `/.netlify/functions/censusdata`
 
       // fetch the URL, wait for the response, store the response in memory
       let response = await fetch(url)
@@ -73,9 +74,23 @@ firebase.auth().onAuthStateChanged(async function(user) {
       }
     })
 
+    // <----RECIPE TO CREATE_SEARCH (POST TO FIRESTORE DB)---->
+    // NOTE: CODE MAY HAVE PROBLEMS B/C TWO SET OF CODE SUBSCRIBED TO SAME BUTTON CLICK EVENT??
 
+    // handle the clicking of the 'get data' button
+    getDataButton.addEventListener(`click`, async function(event) {
+      // prevent default behavior
+      event.preventDefault()
 
+      // create URL for 'create_search' lambda function
+      let url = `.netlify/functions/create_search?userName=${user.displayName}&city=${location}&stateId=${state}`
 
+      // fetch the URL, wait for the response, and store reponse in memory
+      let response = await fetch(url)
+
+      // refresh the page [did not add yet - how to refresh page without clearing search results]
+      // location.reload()
+    })
 
 
   } else {
