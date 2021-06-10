@@ -13,7 +13,7 @@ exports.handler = async function(event) {
 
     // get the necessary query string parameters and store in memory
     let userName = event.queryStringParameters.userName
-    let stateId = event.queryStringParameters.state_id
+    let state = event.queryStringParameters.state
     let city = event.queryStringParameters.city 
 
 
@@ -21,7 +21,7 @@ exports.handler = async function(event) {
     let db = firebase.firestore()
 
     // create new post to firestore db for new user search
-    await db.collection(`searches`).add({
+    await db.collection('searches').add({
         userName: userName,
         state: stateId,
         city: city,
