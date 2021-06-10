@@ -53,7 +53,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let locationsData = json
 
       // create reference to the HTML element we are going to append to
-      let searchResults = document.querySelector(`.search-results`)
+      let searchResults = document.querySelector(`#search-results`)
 
       // loop through the locations data
       for (let i=0; i < json.length; i++) {
@@ -63,14 +63,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
         // create conditional to match user-inputted location
         if (locationElement.city == location) {
           searchResults.insertAdjacentHTML(`beforeend`,`
-          <h1 class="text-xl text-center">Location: ${locationElement.city}, ${locationElement.state_id}<h1>
-          <h1 class="text-xl text-center">Population: ${locationElement.population}<h1>
+          <h1 class="text-xl text-center">Location: ${locationElement.city}, ${locationElement.state_id}</h1>
+          <h1 class="text-xl text-center">Population: ${locationElement.population}</h1>
           `)
-        } else {
-          searchResults.insertAdjacentHTML(`beforeend`,`
-          <h1 class="text-xl text-center">LOCATION NOT FOUND!<h1>
-          `)
-        }
+        } else {}
   
       }
     })
