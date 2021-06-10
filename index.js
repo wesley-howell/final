@@ -66,19 +66,18 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
         if (locationElement.city == city && locationElement.state_id == state) {
           document.querySelector(`.search-results`).innerHTML = `
-          <div class="w-1/2 m-4 p-4 space-y-4 border-2 border-black rounded bg-gray-100 text-justified text-lg">
-           
-              <ul class = text-lg font-normal text-justified space-y-4>
-                <li class="m-1">Location: ${locationElement.city}, ${locationElement.state_id}</li>
-                <li class="m-1">Population: ${locationElement.population}</li>
-                <li class="m-1">Median Age: ${locationElement.age_median}</li>
-                <li class="m-1">% Married: ${locationElement.married}%</li>
-                <li class="m-1">% College Education: ${locationElement.education_college_or_above}%</li>
-                <li class="m-1">Median Household Income: $${locationElement.income_household_median}</li>
-                <li class="m-1">% Home Ownership: ${locationElement.home_ownership}%</li>
-                <li class="m-1">Median Home Value: $${locationElement.home_value}</li>
-                <li class="m-1">Median Rent, Monthly: $${locationElement.rent_median}</li>
-              </ul>
+          <div class="w-1/2 md:w-full m-auto p-2 space-y-2 border border-black rounded bg-gray-100 text-center md:text-md text-lg">
+            <ul class ="md:text-base text-lg font-normal text-left space-y-2 px-2">
+              <li class="m-1">Location: ${locationElement.city}, ${locationElement.state_id}</li>
+              <li class="m-1">Population: ${locationElement.population}</li>
+              <li class="m-1">Median Age: ${locationElement.age_median}</li>
+              <li class="m-1">% Married: ${locationElement.married}%</li>
+              <li class="m-1">% College Education: ${locationElement.education_college_or_above}%</li>
+              <li class="m-1">% Home Ownership: ${locationElement.home_ownership}%</li>
+              <li class="m-1">Median Household Income: $${locationElement.income_household_median}</li>
+              <li class="m-1">Median Home Value: $${locationElement.home_value}</li>
+              <li class="m-1">Median Rent, Monthly: $${locationElement.rent_median}</li>
+            </ul>
           </div>
           `
         } else {}
