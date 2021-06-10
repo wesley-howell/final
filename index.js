@@ -80,7 +80,17 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // prevent default behavior
       event.preventDefault()
 
-       
+      // <---begin duplicative variables - remove if doesn't work--->
+      // get a reference to the input holding the searched city
+      let cityInput = document.querySelector(`#search-for-city`)
+      let stateInput = document.querySelector(`#state`) 
+      
+      // store the user-inputted location in memory
+      let city = cityInput.value 
+      let state = stateInput.value 
+      let userName = user.displayName
+      // <---end duplicative variables. ---> 
+
       // create URL for 'create_search' lambda function
       let url = `.netlify/functions/create_search?userName=${user.displayName}&city=${city}&state=${state}`
  
