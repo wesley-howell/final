@@ -62,10 +62,24 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let locationElement = json[i]
 
         // create conditional to match user-inputted location
+        // removed from appended html: <h1 class="text-xl font-bold text-left m-2 p-2 text-blue-800>Search Results:</h1>
+
         if (locationElement.city == city && locationElement.state_id == state) {
           document.querySelector(`.search-results`).innerHTML = `
-          <h1 class="text-xl text-center">Location: ${locationElement.city}, ${locationElement.state_id}</h1>
-          <h1 class="text-xl text-center">Population: ${locationElement.population}</h1>
+          <div class="w-1/2 m-4 p-4 space-y-4 border-2 border-black rounded bg-gray-100 text-justified text-lg">
+           
+              <ul class = text-lg font-normal text-justified space-y-4>
+                <li class="m-1">Location: ${locationElement.city}, ${locationElement.state_id}</li>
+                <li class="m-1">Population: ${locationElement.population}</li>
+                <li class="m-1">Median Age: ${locationElement.age_median}</li>
+                <li class="m-1">% Married: ${locationElement.married}%</li>
+                <li class="m-1">% College Education: ${locationElement.education_college_or_above}%</li>
+                <li class="m-1">Median Household Income: $${locationElement.income_household_median}</li>
+                <li class="m-1">% Home Ownership: ${locationElement.home_ownership}%</li>
+                <li class="m-1">Median Home Value: $${locationElement.home_value}</li>
+                <li class="m-1">Median Rent, Monthly: $${locationElement.rent_median}</li>
+              </ul>
+          </div>
           `
         } else {}
   
@@ -98,7 +112,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let response = await fetch(url)
 
       // refresh the page [did not add yet - how to refresh page without clearing search results]
-      location.reload()
+      // location.reload()
     })
 
 
