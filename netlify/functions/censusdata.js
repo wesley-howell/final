@@ -7,8 +7,10 @@ let fs = require('fs')
 // define lambda function
 exports.handler = async function(event) {
     
+    console.log(event)
+
     // read censusdata CSV file from disk
-    let censusDataFile = fs.readFileSync(`./censusdata.csv`)
+    let censusDataFile = fs.readFileSync(`./uscities.csv`)
 
     // turn the censusData file into javascript object, wait for that to happen
     let censusDataFromCsv = await csv(censusDataFile)
@@ -22,12 +24,10 @@ exports.handler = async function(event) {
     // define variables for key stats to return in response to user search
     let totalPopulation = censusDataFromCsv.
 
-
-    // return for lambda function
     return {
-     statusCode: 200,
-     body: returnValue
+        statusCode: 200,
+        body: `Hello from the back end!`
     }
 
-
 }
+
