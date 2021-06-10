@@ -33,9 +33,11 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       // get a reference to the input holding the searched location
       let locationInput = document.querySelector(`#location`)
+      let stateInput = document.querySelector(`#state`) 
       
       // store the user-inputted location in memory
       let location = locationInput.value 
+      let state = stateInput.value 
 
       // create the URL for our 'create search' lambda function [NOTE: NEED TO CREATE SEPARATE LAMBDA FUNCTION FOR THIS]
       let url = `/.netlify/functions/censusdata?city=${location}`
@@ -61,11 +63,11 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let locationElement = json[i]
 
         // create conditional to match user-inputted location
-        if (locationElement.city == location) {
-          searchResults.insertAdjacentHTML(`beforeend`,`
+        if (locationElement.city == location && locationElement.state_id == state) {
+          document.querySelector(`.search-results`).innerHTML = `
           <h1 class="text-xl text-center">Location: ${locationElement.city}, ${locationElement.state_id}</h1>
           <h1 class="text-xl text-center">Population: ${locationElement.population}</h1>
-          `)
+          `
         } else {}
   
       }
