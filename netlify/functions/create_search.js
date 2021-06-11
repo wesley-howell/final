@@ -6,7 +6,7 @@ let firebase = require(`./firebase`)
 // define the lambda function
 exports.handler = async function(event) {
 
-     console.log(event) 
+     // console.log(event) 
      
 
     // get the necessary query string parameters and store in memory

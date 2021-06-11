@@ -7,7 +7,7 @@ let fs = require('fs')
 // define lambda function
 exports.handler = async function(event) {
     
-    console.log(event)
+    // console.log(event)
 
     // read censusdata CSV file from disk
     let censusDataFile = fs.readFileSync(`./uscities.csv`)
