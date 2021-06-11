@@ -62,7 +62,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let locationElement = json[i]
 
         // create conditional to match user-inputted location
-        // removed from appended html: <h1 class="text-xl font-bold text-left m-2 p-2 text-blue-800>Search Results:</h1>
 
         if (locationElement.city == city && locationElement.state_id == state) {
           document.querySelector(`.search-results`).innerHTML = `
