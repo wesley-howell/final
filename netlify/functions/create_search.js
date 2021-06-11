@@ -1,5 +1,3 @@
-// note: reference logic from wk9 lecture, create_posts.js
-
 // goal: provide a function to log a new user-generated search in firebase
 
 // allows us to use firebase
@@ -12,7 +10,7 @@ exports.handler = async function(event) {
      
 
     // get the necessary query string parameters and store in memory
-    let userName = event.queryStringParameters.userName
+    let userName = event.queryStringParameters.user.displayName
     let state = event.queryStringParameters.state
     let city = event.queryStringParameters.city 
 
